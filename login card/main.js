@@ -48,6 +48,6 @@ document.querySelector("#submit-button").addEventListener("click", (event) => {
     // Если все верно, сохраняем токен в куки
     document.cookie = "token=12345; max-age=86400; path=/;";
 
-    window.location.href = "/secret.html";
+    window.location.href = "../movie/secret.html";
 
 });
