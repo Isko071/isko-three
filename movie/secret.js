@@ -2,12 +2,12 @@ let hasToken = document.cookie.includes("token=");
 
 let page = window.location.pathname;
 
-if (hasToken === true && (page.includes("index.html") || page === "/")) {
-    window.location.href = "../movie/secret.html";
+if ((hasToken) && (page.includes("../index.html") || page === "/")) {
+    window.location.href = "../movie/index.html";
 }
 
-if (hasToken === false && page.includes("secret.html")) {
-    window.location.href = "../login card/index.html";
+if (hasToken === false && page.includes("../index.html")) {
+    window.location.href = "../index.html";
 }
 
 // 1. Находим элементы главного блока
