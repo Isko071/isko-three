@@ -6,7 +6,12 @@
     <title>Login</title>
     <link rel="stylesheet" href="../login-card/index.css">
     <link rel="icon" type="image/png" href="../image/logo/Logo.png">
-    <script src="../secret.js"></script>
+    <script>
+        // Если токен уже есть — сразу отправляем на страницу фильмов
+        if (document.cookie.includes("token=")) {
+            location.replace("movie/index.html");
+        }
+    </script>
 </head>
 <body>
     <div class="background-img"></div>
