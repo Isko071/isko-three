@@ -54,22 +54,26 @@ function renderPost(post, users, comments) {
     fragment.querySelector(".comments-count").textContent = postComments.length;
 
     const list = fragment.querySelector(".comments-list");
+    const extraComments = []; // все комментарии, кроме первого
     postComments.forEach((comment, index) => {
         const commentElement = renderComment(comment);
         if (index > 0) {
             commentElement.classList.add("hidden");
+            extraComments.push(commentElement);
         }
         list.append(commentElement);
     });
 
-    // кнопка "show more" показывает остальные комментарии
+    // кнопка переключает: "show more" показывает остальные комментарии, "show less" прячет обратно
     const showMoreButton = fragment.querySelector(".show-more-button");
     if (postComments.length <= 1) {
         showMoreButton.classList.add("hidden");
     }
+    let expanded = false;
     showMoreButton.addEventListener("click", () => {
-        list.querySelectorAll(".hidden").forEach(element => element.classList.remove("hidden"));
-        showMoreButton.classList.add("hidden");
+        expanded = !expanded;
+        extraComments.forEach(element => element.classList.toggle("hidden", !expanded));
+        showMoreButton.textContent = expanded ? "show less" : "show more";
     });
 
     // возвращаем сам пост (<article>), чтобы вставить его на страницу
