@@ -9,40 +9,60 @@
     <script src="./main.js" defer></script>
 </head>
 <body>
-    <!-- Сюда JS вставляет посты -->
-    <main class="posts" id="posts"></main>
+    <div class="background-img"></div>
+    <div class="overlay"></div>
+
+    <div class="header">
+        <div class="header-inner">
+            <div class="header-name">
+                <img src="../image/logo/Logo.png" alt="" class="company-logo">
+                <span class="company-name">Company Name</span>
+            </div>
+
+            <div class="header-links">
+                <a href="#" class="other">Feed</a>
+                <a href="#" class="other">Pricing</a>
+                <a href="#" class="other">Wishlist</a>
+                <a href="#" class="profile"><img src="../image/secret-logo/Avatar.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Белая карточка; сюда JS вставляет посты -->
+    <main class="content">
+        <div class="posts" id="posts"></div>
+    </main>
 
     <!-- Шаблон поста: JS клонирует его для каждого поста и заполняет данными -->
     <template id="post-template">
         <article class="post">
             <header class="post-header">
                 <div class="post-author">
-                    <img src="./image/user.svg" alt="" class="post-avatar">
-                    <div class="post-author-info">
+                    <img src="./image/user.svg" alt="" class="post-icon">
+                    <span class="post-author-name">
                         <span class="post-name"></span>
                         <span class="post-username"></span>
-                    </div>
+                    </span>
                 </div>
                 <div class="post-company">
-                    <img src="./image/company.svg" alt="" class="post-company-icon">
+                    <img src="./image/company.svg" alt="" class="post-icon">
                     <span class="post-company-name"></span>
                 </div>
-                <button type="button" class="share-button">Share</button>
+                <button type="button" class="share-button">
+                    <img src="./image/share.svg" alt="Share" class="post-icon">
+                </button>
             </header>
 
-            <div class="post-content">
-                <h2 class="post-title"></h2>
-                <p class="post-text"></p>
-            </div>
+            <h2 class="post-title"></h2>
+            <p class="post-text"></p>
 
             <section class="comments">
                 <div class="comments-header">
-                    <img src="./image/comments.svg" alt="" class="comments-icon">
-                    <span>Comments</span>
-                    <span class="comments-count"></span>
+                    <img src="./image/comments.svg" alt="" class="post-icon">
+                    <span>Comments (<span class="comments-count"></span>)</span>
                 </div>
                 <div class="comments-list"></div>
-                <button type="button" class="show-more-button">Show more</button>
+                <button type="button" class="show-more-button">show more</button>
             </section>
         </article>
     </template>
