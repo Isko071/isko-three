@@ -1,15 +1,3 @@
-let hasToken = document.cookie.includes("token=");
-
-let page = window.location.pathname;
-
-if ((hasToken) && (page.includes("../index.html") || page === "/")) {
-    window.location.href = "../movie/index.html";
-}
-
-if (hasToken === false && page.includes("../index.html")) {
-    window.location.href = "../index.html";
-}
-
 // 1. Находим элементы главного блока
 const mainPoster = document.getElementById('main-poster');
 const mainTitle = document.getElementById('main-title');
@@ -76,9 +64,8 @@ document.querySelector("#logout-btn").addEventListener("click", (event) => {
 
     document.cookie = "token=; max-age=0; path=/";
 
-    showPage(); 
-    
-    console.log("Вы вышли из системы");
+    // replace, чтобы кнопка "Назад" не возвращала на защищённую страницу
+    location.replace("../index.html");
 });
 
 const posters = document.querySelectorAll('.poster-wrapper');

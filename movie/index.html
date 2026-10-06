@@ -6,7 +6,13 @@
     <title>Movie</title>
     <link rel="stylesheet" href="./secret.css">
     <link rel="icon" type="image/png" href="../image/logo/Logo.png">
-    <script src=" ./secret.js" defer></script>
+    <script>
+        // Без токена страница фильмов недоступна — отправляем на логин
+        if (!document.cookie.includes("token=")) {
+            location.replace("../index.html");
+        }
+    </script>
+    <script src="./secret.js" defer></script>
 </head>
 <body>
     <div class="background-img"></div>
