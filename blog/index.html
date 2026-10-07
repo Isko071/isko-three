@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/png" href="../image/logo/Logo.png">
+    <script>
+        // Без токена страница блога недоступна — отправляем на логин
+        if (!document.cookie.includes("token=")) {
+            location.replace("../index.html");
+        }
+    </script>
+    <script src="./main.js" defer></script>
+</head>
+<body>
+    <div class="background-img"></div>
+    <div class="overlay"></div>
+
+    <div class="header">
+        <div class="header-inner">
+            <a href="../movie/index.html" class="header-name">
+                <img src="../image/logo/Logo.png" alt="" class="company-logo">
+                <span class="company-name">Company Name</span>
+            </a>
+
+            <div class="header-links">
+                <a href="#" class="other">Feed</a>
+                <a href="#" class="other">Pricing</a>
+                <a href="#" class="other">Wishlist</a>
+                <a href="#" class="profile"><img src="../image/secret-logo/Avatar.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Белая карточка; сюда JS вставляет посты -->
+    <main class="content">
+        <div class="posts" id="posts"></div>
+    </main>
+
+    <!-- Шаблон поста: JS клонирует его для каждого поста и заполняет данными -->
+    <template id="post-template">
+        <article class="post">
+            <header class="post-header">
+                <div class="post-author">
+                    <img src="./image/user.svg" alt="" class="post-icon">
+                    <span class="post-author-name">
+                        <span class="post-name"></span>
+                        <span class="post-username"></span>
+                    </span>
+                </div>
+                <div class="post-company">
+                    <img src="./image/company.svg" alt="" class="post-icon">
+                    <span class="post-company-name"></span>
+                </div>
+                <button type="button" class="share-button">
+                    <img src="./image/share.svg" alt="Share" class="post-icon">
+                </button>
+            </header>
+
+            <h2 class="post-title"></h2>
+            <p class="post-text"></p>
+
+            <section class="comments">
+                <div class="comments-header">
+                    <img src="./image/comments.svg" alt="" class="post-icon">
+                    <span>Comments (<span class="comments-count"></span>)</span>
+                </div>
+                <div class="comments-list"></div>
+                <button type="button" class="show-more-button">show more</button>
+            </section>
+        </article>
+    </template>
+
+    <!-- Шаблон одного комментария -->
+    <template id="comment-template">
+        <div class="comment">
+            <span class="comment-email"></span>
+            <h3 class="comment-title"></h3>
+            <p class="comment-text"></p>
+        </div>
+    </template>
+</body>
+</html>
